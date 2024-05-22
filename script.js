@@ -94,10 +94,10 @@ const hexToRgb = (hex) => {
   let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
   return result
     ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16),
-      }
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16),
+    }
     : null
 }
 
@@ -118,7 +118,7 @@ themeColorSelector.addEventListener('click', () => {
 const setDynamicColor = (color) => {
 
   const { r, g, b } = hexToRgb(`${color}`)
-  
+
   root.style.setProperty('--themeColor', `${r},${g},${b}`);
   //localStorage.setItem('color', color)
 }
@@ -134,6 +134,19 @@ themeColorSelectorInput.addEventListener('input', (e) => {
 // }
 
 // ---
+
+function redirectToMailApp(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+
+  const mailtoLink = `mailto:furkan.karayel@web.de?subject=Contact Form Submission&body=Name: ${name}%0D%0AEmail: ${email}%0D%0AMessage: ${message}`;
+
+  window.location.href = mailtoLink;
+}
+
 const headerLogoConatiner = document.querySelector('.main-header__logo-container')
 
 headerLogoConatiner.addEventListener('click', () => {
